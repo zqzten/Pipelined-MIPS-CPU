@@ -1,31 +1,31 @@
 `ifndef _cpu
 `define _cpu
 
-`include "pipeline_control.v"
+`include "../src/pipeline_control.v"
 
-`include "F_reg.v"
-`include "instr_mem.v"
-`include "next_pc.v"
+`include "../src/F_reg.v"
+`include "../src/instr_mem.v"
+`include "../src/next_pc.v"
 
-`include "D_reg.v"
-`include "dstE.v"
-`include "dstM.v"
-`include "srcA.v"
-`include "srcB.v"
-`include "reg_file.v"
-`include "fwdA.v"
-`include "fwdB.v"
+`include "../src/D_reg.v"
+`include "../src/dstE.v"
+`include "../src/dstM.v"
+`include "../src/srcA.v"
+`include "../src/srcB.v"
+`include "../src/reg_file.v"
+`include "../src/fwdA.v"
+`include "../src/fwdB.v"
 
-`include "E_reg.v"
-`include "aluA.v"
-`include "aluB.v"
-`include "alufunc.v"
-`include "alu.v"
+`include "../src/E_reg.v"
+`include "../src/aluA.v"
+`include "../src/aluB.v"
+`include "../src/alufunc.v"
+`include "../src/alu.v"
 
-`include "M_reg.v"
-`include "data_mem.v"
+`include "../src/M_reg.v"
+`include "../src/data_mem.v"
 
-`include "W_reg.v"
+`include "../src/W_reg.v"
 
 module cpu(
     input clk
@@ -99,8 +99,8 @@ next_pc NEXT_PC(f_valP, F_valP, f_op, f_valC);
 D_reg D_REG(D_op, D_func, D_rs, D_rt, D_rd, D_valC, clk, D_stall, f_op, f_func, f_rs, f_rd, f_rt, f_valC);
 dstE DSTE(d_dstE, D_op, D_rt, D_rd);
 dstM DSTM(d_dstM, D_op, D_rt);
-srcA SRCA(d_srcA, D_op, D_rs);
-srcB SRCB(d_srcB, D_op, D_rt);
+srcA SRCA(d_srcA, D_op, D_rt);
+srcB SRCB(d_srcB, D_op, D_rs);
 reg_file REG_FILE(d_rvalA, d_rvalB, clk, d_srcA, d_srcB, W_dstM, W_dstE, W_valM, W_valE);
 fwdA FWDA(d_valA, d_srcA, E_dstE, M_dstM, M_dstE, W_dstM, W_dstE, d_rvalA, e_valE, m_valM, M_valE, W_valM, W_valE);
 fwdB FWDB(d_valB, d_srcB, E_dstE, M_dstM, M_dstE, W_dstM, W_dstE, d_rvalB, e_valE, m_valM, M_valE, W_valM, W_valE);
