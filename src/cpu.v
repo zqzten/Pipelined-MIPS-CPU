@@ -96,7 +96,7 @@ instr_mem INSTR_MEM(f_op, f_func, f_rs, f_rt, f_rd, f_valC, F_valP);
 next_pc NEXT_PC(f_valP, F_valP, f_op, f_valC);
 
 /* decode */
-D_reg D_REG(D_op, D_func, D_rs, D_rt, D_rd, D_valC, clk, D_stall, f_op, f_func, f_rs, f_rd, f_rt, f_valC);
+D_reg D_REG(D_op, D_func, D_rs, D_rt, D_rd, D_valC, clk, D_stall, f_op, f_func, f_rs, f_rt, f_rd, f_valC);
 dstE DSTE(d_dstE, D_op, D_rt, D_rd);
 dstM DSTM(d_dstM, D_op, D_rt);
 srcA SRCA(d_srcA, D_op, D_rt);
